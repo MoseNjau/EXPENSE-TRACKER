@@ -33,6 +33,6 @@ const incomeSchema = new mongoose.Schema({
         trim: true,
         maxLength: 20
     }
-}, {timestamps: true})
+}, {timestamps: true});
 
 module.exports = mongoose.model('Income', incomeSchema);
