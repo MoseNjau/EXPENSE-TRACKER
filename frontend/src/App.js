@@ -8,6 +8,7 @@ import Dashboard from './Components/Dashboard/Dashboard';
 import Income from './Components/Income/Income'
 import Expenses from './Components/Expenses/Expenses';
 import { useGlobalContext } from './context/globalContext';
+import { ToastContainer, toast } from 'react-toastify';
 
 function App() {
   const [active, setActive] = useState(1)
@@ -43,6 +44,7 @@ function App() {
           {displayData()}
         </main>
       </MainLayout>
+      <ToastContainer />
     </AppStyled>
   );
 }
