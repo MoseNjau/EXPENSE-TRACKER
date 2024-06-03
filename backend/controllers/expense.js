@@ -2,7 +2,10 @@ const ExpenseSchema = require("../models/expenseModel")
 
 
 exports.addExpense = async (req, res) => {
-    const {title, amount, category, description, date}  = req.body
+    let {title, amount, category, description, date}  = req.body
+
+    // Remove commas from the amount string and convert to number
+    amount = parseFloat(amount.replace(/,/g, ''));
 
     const income = ExpenseSchema({
         title,
