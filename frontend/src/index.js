@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
-import { GlobalProvider } from './context/globalContext';
+import { GlobalProvider } from './context/GlobalContext';
 import { GlobalStyle } from './styles/GlobalStyle';
 import 'react-toastify/dist/ReactToastify.css';
 

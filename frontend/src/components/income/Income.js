@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useGlobalContext } from '../../context/globalContext';
+import { useGlobalContext } from '../../context/GlobalContext';
 import { InnerLayout } from '../../styles/Layouts';
-import Form from '../Form/Form';
+import Form from '../form/Form';
 import IncomeItem from '../IncomeItem/IncomeItem';
 
 function Income() {
-    const {addIncome,incomes, getIncomes, deleteIncome, totalIncome} = useGlobalContext()
+    const { incomes, getIncomes, deleteIncome, totalIncome} = useGlobalContext()
 
     useEffect(() =>{
         getIncomes()
-    }, [])
+    }, [getIncomes])
     return (
         <IncomeStyled>
             <InnerLayout>

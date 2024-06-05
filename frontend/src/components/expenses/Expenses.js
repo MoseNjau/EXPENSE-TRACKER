@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useGlobalContext } from '../../context/globalContext';
+import { useGlobalContext } from '../../context/GlobalContext';
 import { InnerLayout } from '../../styles/Layouts';
-import Form from '../Form/Form';
+// import Form from '../form/Form';
 import IncomeItem from '../IncomeItem/IncomeItem';
 import ExpenseForm from './ExpenseForm';
 
 function Expenses() {
-    const {addIncome,expenses, getExpenses, deleteExpense, totalExpenses} = useGlobalContext()
+    const { expenses, getExpenses, deleteExpense, totalExpenses} = useGlobalContext()
 
     useEffect(() =>{
         getExpenses()
-    }, [])
+    }, [getExpenses])
     return (
         <ExpenseStyled>
             <InnerLayout>
