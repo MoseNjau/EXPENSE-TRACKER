@@ -1,34 +1,30 @@
-import React, { useState, useMemo } from "react";
+// src/App.js
+import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import bg from "./img/bg.png";
 import { MainLayout } from "./styles/Layouts";
-import Orb from "./components/orb/Orb";
-import Navigation from "./components/navigation/Navigation";
-import Dashboard from "./components/dashboard/Dashboard";
-import Income from "./components/income/Income";
-import Expenses from "./components/expenses/Expenses";
-import { useGlobalContext } from "./context/GlobalContext";
+import Orb from "./Components/Orb/Orb";
 import { ToastContainer } from "react-toastify";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import Signup from './Components/Auth/Signup';
+import Login from './Components/Auth/Login';
+import Logout from './Components/Auth/Logout';
+import Dashboard from './Components/Dashboard/Dashboard';
+import Income from './Components/Income/Income';
+import Expenses from './Components/Expenses/Expenses';
+import LandingPage from './Components/LandingPage/LandingPage';
+import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Navigation from "./Components/Navigation/Navigation";
+import { useGlobalContext } from './Context/GlobalContext'; // Import the context hook
 
 function App() {
-  const [active, setActive] = useState(1);
+  const { user } = useGlobalContext(); // Get user from the context
+  const [active, setActive] = useState('dashboard'); // Initialize active state
+  const navigate = useNavigate();
 
-  const global = useGlobalContext();
-  console.log(global);
-
-  const displayData = () => {
-    switch (active) {
-      case 1:
-        return <Dashboard />;
-      case 2:
-        return <Dashboard />;
-      case 3:
-        return <Income />;
-      case 4:
-        return <Expenses />;
-      default:
-        return <Dashboard />;
-    }
+  const handleLogout = () => {
+    localStorage.removeItem('user'); // Clear user data on logout
+    navigate('/'); // Redirect to landing page
   };
 
   const orbMemo = useMemo(() => {
@@ -39,8 +35,40 @@ function App() {
     <AppStyled bg={bg} className="App">
       {orbMemo}
       <MainLayout>
-        <Navigation active={active} setActive={setActive} />
-        <main>{displayData()}</main>
+        {user && <Navigation active={active} setActive={setActive} handleLogout={handleLogout} />} {/* Render Navigation only if user is logged in */}
+        <main>
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/logout" element={<Logout />} />
+            <Route 
+              path="/dashboard" 
+              element={
+                <PrivateRoute>
+                  <Dashboard />
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/income" 
+              element={
+                <PrivateRoute>
+                  <Income />
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/expenses" 
+              element={
+                <PrivateRoute>
+                  <Expenses />
+                </PrivateRoute>
+              } 
+            />
+            <Route path="*" element={<Navigate to="/" />} />
+          </Routes>
+        </main>
       </MainLayout>
       <ToastContainer />
     </AppStyled>

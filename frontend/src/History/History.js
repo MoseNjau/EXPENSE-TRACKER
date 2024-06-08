@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { useGlobalContext } from '../context/GlobalContext';
+import { useGlobalContext } from '../Context/GlobalContext';
 
 function History() {
     const {transactionHistory} = useGlobalContext()

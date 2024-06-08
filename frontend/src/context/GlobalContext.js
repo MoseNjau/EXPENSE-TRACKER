@@ -1,8 +1,6 @@
-// src/context/GlobalContext.js
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
-
 
 const BASE_URL = "http://localhost:5000/api/v1/";
 
@@ -17,7 +15,7 @@ export const GlobalProvider = ({ children }) => {
   // Auth related functions
   const register = async (username, email, password) => {
     try {
-      await authService.register(username, email, password);
+      await axios.post(`${BASE_URL}register`, { username, email, password });
       toast.success("User registered successfully");
     } catch (err) {
       setError(err.response.data.message);
@@ -27,8 +25,10 @@ export const GlobalProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const userData = await authService.login(email, password);
+      const response = await axios.post(`${BASE_URL}login`, { email, password });
+      const userData = response.data;
       setUser(userData);
+      localStorage.setItem('user', JSON.stringify(userData));
       toast.success("User logged in successfully");
     } catch (err) {
       setError(err.response.data.message);
@@ -37,7 +37,7 @@ export const GlobalProvider = ({ children }) => {
   };
 
   const logout = () => {
-    authService.logout();
+    localStorage.removeItem('user');
     setUser(null);
     toast.success("User logged out successfully");
   };
@@ -45,12 +45,11 @@ export const GlobalProvider = ({ children }) => {
   // Add Income
   const addIncome = async (income) => {
     try {
-      const response = await axios.post(`${BASE_URL}add-income`, income, {
+      await axios.post(`${BASE_URL}add-income`, income, {
         headers: {
           'x-auth-token': user?.token
         }
       });
-      console.log(response);
       toast.success("Income Added Successfully");
       getIncomes();
     } catch (err) {
@@ -71,12 +70,11 @@ export const GlobalProvider = ({ children }) => {
 
   const deleteIncome = async (id) => {
     try {
-      const res = await axios.delete(`${BASE_URL}delete-income/${id}`, {
+      await axios.delete(`${BASE_URL}delete-income/${id}`, {
         headers: {
           'x-auth-token': user?.token
         }
       });
-      console.log(res.data);
       toast.success("Income Deleted Successfully");
       getIncomes();
     } catch (err) {
@@ -96,12 +94,11 @@ export const GlobalProvider = ({ children }) => {
   // Add Expense
   const addExpense = async (expense) => {
     try {
-      const response = await axios.post(`${BASE_URL}add-expense`, expense, {
+      await axios.post(`${BASE_URL}add-expense`, expense, {
         headers: {
           'x-auth-token': user?.token
         }
       });
-      console.log(response.data);
       toast.success("Expense Added Successfully");
       getExpenses();
     } catch (err) {
@@ -122,12 +119,11 @@ export const GlobalProvider = ({ children }) => {
 
   const deleteExpense = async (id) => {
     try {
-      const res = await axios.delete(`${BASE_URL}delete-expense/${id}`, {
+      await axios.delete(`${BASE_URL}delete-expense/${id}`, {
         headers: {
           'x-auth-token': user?.token
         }
       });
-      console.log(res.data);
       toast.success("Expense Deleted Successfully");
       getExpenses();
     } catch (err) {

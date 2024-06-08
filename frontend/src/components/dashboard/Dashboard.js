@@ -5,7 +5,8 @@ import { InnerLayout } from '../../styles/Layouts';
 import { dollar } from '../../utils/Icons';
 import Chart from '../Chart/Chart';
 import { ToastContainer } from 'react-toastify';
-import { useGlobalContext } from '../../context/GlobalContext';
+import { useGlobalContext } from '../../Context/GlobalContext';
+import { privateRoute } from '../../Components/PrivateRoute/PrivateRoute'
 
 function Dashboard() {
     const {totalExpenses,incomes, expenses, totalIncome, totalBalance, getIncomes, getExpenses } = useGlobalContext()

@@ -4,7 +4,7 @@ import { InnerLayout } from '../../styles/Layouts';
 // import Form from '../form/Form';
 import IncomeItem from '../IncomeItem/IncomeItem';
 import ExpenseForm from './ExpenseForm';
-import { useGlobalContext } from '../../context/globalContext';
+import { useGlobalContext } from '../../Context/GlobalContext';
 
 function Expenses() {
     const { expenses, getExpenses, deleteExpense, totalExpenses} = useGlobalContext()

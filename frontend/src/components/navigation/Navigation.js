@@ -1,17 +1,30 @@
-import React from "react";
-import styled from "styled-components";
-import avatar from "../../img/avatar.png";
-import { signout } from "../../utils/Icons";
-import { menuItems } from "../../utils/menuItems";
+// src/Components/Navigation/Navigation.js
+import React from 'react';
+import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../../Context/GlobalContext';
+import { signout } from '../../utils/Icons';
+import { menuItems } from '../../utils/menuItems';
+import avatar from "../../img/avatar.png";  // Make sure the path to avatar is correct
 
 function Navigation({ active, setActive }) {
+  const { user, logout } = useGlobalContext();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  if (!user) return null; // Don't render if user is not logged in
+
   return (
     <NavStyled>
       <div className="user-con">
         <img src={avatar} alt="" />
         <div className="text">
-          <h2>Moses</h2>
-          <p>Your Money</p>
+          <h2>{user.username}</h2>
+          <p>Moses Njau</p>
         </div>
       </div>
       <ul className="menu-items">
@@ -19,8 +32,11 @@ function Navigation({ active, setActive }) {
           return (
             <li
               key={item.id}
-              onClick={() => setActive(item.id)}
-              className={active === item.id ? "active" : ""}
+              onClick={() => {
+                setActive(item.id);
+                navigate(item.link);
+              }}
+              className={active === item.id ? 'active' : ''}
             >
               {item.icon}
               <span>{item.title}</span>
@@ -29,7 +45,7 @@ function Navigation({ active, setActive }) {
         })}
       </ul>
       <div className="bottom-nav">
-        <li>{signout} Sign Out</li>
+        <li onClick={handleLogout}>{signout} Sign Out</li>
       </div>
     </NavStyled>
   );
@@ -99,7 +115,7 @@ const NavStyled = styled.nav`
       color: rgba(34, 34, 96, 1) !important;
     }
     &::before {
-      content: "";
+      content: '';
       position: absolute;
       left: 0;
       top: 0;
@@ -107,6 +123,20 @@ const NavStyled = styled.nav`
       height: 100%;
       background: #222260;
       border-radius: 0 10px 10px 0;
+    }
+  }
+
+  .bottom-nav {
+    li {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(34, 34, 96, 0.6);
+      transition: color 0.4s ease-in-out;
+      &:hover {
+        color: rgba(34, 34, 96, 1);
+      }
     }
   }
 `;

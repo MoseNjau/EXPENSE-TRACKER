@@ -1,6 +1,6 @@
 // src/components/Logout.js
 import React from 'react';
-import { useGlobalContext } from '../../context/globalContext';
+import { useGlobalContext } from '../../Context/GlobalContext';
 
 const Logout = () => {
     const { logout } = useGlobalContext();
