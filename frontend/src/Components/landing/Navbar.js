@@ -13,7 +13,7 @@ function Navbar() {
         <div className="about-us">About Us</div>
       </div>
       <div className="auth">
-        <Link to="/sign-up" className="sign-up">Sign Up</Link>
+        <Link to="/signup" className="sign-up">Sign Up</Link>
         <Link to="/login" className="login">Login</Link>
       </div>
     </NavbarStyled>
