@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import bg from "./img/bg.png";
@@ -12,19 +11,20 @@ import Logout from './Components/Auth/Logout';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Income from './Components/Income/Income';
 import Expenses from './Components/Expenses/Expenses';
+import Transactions from './Components/Transactions/Transactions';
 import LandingPage from './Components/LandingPage/LandingPage';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Navigation from "./Components/Navigation/Navigation";
-import { useGlobalContext } from './Context/GlobalContext'; // Import the context hook
+import { useGlobalContext } from './Context/GlobalContext';
 
 function App() {
-  const { user } = useGlobalContext(); // Get user from the context
-  const [active, setActive] = useState('dashboard'); // Initialize active state
+  const { user } = useGlobalContext();
+  const [active, setActive] = useState('dashboard');
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('user'); // Clear user data on logout
-    navigate('/'); // Redirect to landing page
+    localStorage.removeItem('user');
+    navigate('/');
   };
 
   const orbMemo = useMemo(() => {
@@ -35,7 +35,7 @@ function App() {
     <AppStyled bg={bg} className="App">
       {orbMemo}
       <MainLayout>
-        {user && <Navigation active={active} setActive={setActive} handleLogout={handleLogout} />} {/* Render Navigation only if user is logged in */}
+        {user && <Navigation active={active} setActive={setActive} handleLogout={handleLogout} />}
         <main>
           <Routes>
             <Route path="/" element={<LandingPage />} />
@@ -63,6 +63,14 @@ function App() {
               element={
                 <PrivateRoute>
                   <Expenses />
+                </PrivateRoute>
+              } 
+            />
+            <Route 
+              path="/transactions" 
+              element={
+                <PrivateRoute>
+                  <Transactions />
                 </PrivateRoute>
               } 
             />
