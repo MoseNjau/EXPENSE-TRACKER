@@ -5,14 +5,14 @@ import { MainLayout } from "./styles/Layouts";
 import Orb from "./Components/Orb/Orb";
 import { ToastContainer } from "react-toastify";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import Signup from './Components/Auth/Signup';
-import Login from './Components/Auth/Login';
-import Logout from './Components/Auth/Logout';
-import Dashboard from './Components/Dashboard/Dashboard';
-import Income from './Components/Income/Income';
-import Expenses from './Components/Expenses/Expenses';
-import Transactions from './Components/Transactions/Transactions';
-import LandingPage from './Components/LandingPage/LandingPage';
+import Signup from './pages/Auth/Signup';
+import Login from './pages/Auth/Login';
+import Logout from './pages/Auth/Logout';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Income from './pages/Income/Income';
+import Expenses from './pages/Expenses/Expenses';
+import Transactions from './pages/Transactions/Transactions';
+import LandingPage from './pages/LandingPage/LandingPage';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import Navigation from "./Components/Navigation/Navigation";
 import { useGlobalContext } from './Context/GlobalContext';
@@ -38,7 +38,7 @@ function App() {
         {user && <Navigation active={active} setActive={setActive} handleLogout={handleLogout} />}
         <main>
           <Routes>
-            <Route path="/" element={<LandingPage />} />
+            <Route index element={<LandingPage />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />
