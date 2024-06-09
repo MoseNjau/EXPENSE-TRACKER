@@ -1,12 +1,17 @@
-import React from 'react'
-import styled from 'styled-components';
-import chart from '../../img/chart.png';
+import React from "react";
+import styled from "styled-components";
+import chart from "../../img/chart.png";
+import min from "../../img/min_max.png";
 
 function Main() {
   return (
     <MainStyled>
       <div className="section1">
-        <img className='image' src='https://i.pinimg.com/564x/16/44/04/1644043229ea78ca7923f387b1e27006.jpg' alt='Income and Expenses' />
+        <img
+          className="image"
+          src="https://i.pinimg.com/564x/16/44/04/1644043229ea78ca7923f387b1e27006.jpg"
+          alt="Income and Expenses"
+        />
       </div>
       <div className="section2">
         <p>
@@ -17,23 +22,29 @@ function Main() {
         </p>
       </div>
       <div className="section3">
-        <div className='content'>
+        <div className="content">
           <p>
             Do not spend a lot of time worried about how you cannot manage your
             money, Just visualize how and where your cash flows to and make more
             informed decisions
           </p>
         </div>
-        <div className='pic'>pic</div>
+        <div className="pic">
+          <img className="chart" src={chart} alt="chart" />
+        </div>
       </div>
       <div className="section4">
-        <div>pic</div>
+        <div className="pic">
+          <img className="min" src={min} alt="Min Max" />
+        </div>
         <div className="content">
-          <h1>Have the Statistics of your Cash</h1>
-          <p>
-            Get an idea of the highest and lowest amount of money that you spend
-            and receive overtime
-          </p>
+          <div className="inner-content">
+            <h1>Have the Statistics of your Cash</h1>
+            <p>
+              Get an idea of the highest and lowest amount of money that you
+              spend and receive overtime
+            </p>
+          </div>
         </div>
       </div>
       <div className="section5">
@@ -67,7 +78,7 @@ const MainStyled = styled.div`
     margin: 20px;
     p {
       text-align: center;
-      width: 55%;
+      width: 70%;
     }
   }
   .section3 {
@@ -84,8 +95,46 @@ const MainStyled = styled.div`
     }
     .pic {
       width: 50%;
+      .chart {
+        border-radius: 20px;
+      }
+    }
+  }
+
+  .section4 {
+    font-size: large;
+    display: flex;
+    background-color: #b273f0;
+    padding: 10px;
+    .content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .inner-content {
+        width: 70%;
+      }
+    }
+    .pic {
+      width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .min {
+        border-radius: 20px;
+      }
+    }
+  }
+
+  .section5 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    text-align: center;
+    p {
+      width: 60%;
     }
   }
 `;
 
-export default Main
+export default Main;
