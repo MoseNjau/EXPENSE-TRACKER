@@ -42,7 +42,11 @@ const NavbarStyled = styled.div`
     .about-us {
       &:hover {
         cursor: pointer;
-        background-color: blue;
+        background-color: #8c30e8;
+        color: white;
+      }
+      &:active {
+        background-color: #bf8cf2;
       }
       padding: 8px;
       border-radius: 10px;
@@ -57,7 +61,7 @@ const NavbarStyled = styled.div`
       &:hover {
         cursor: pointer;
       }
-      &:active{
+      &:active {
         background-color: white;
         color: black;
       }
@@ -77,6 +81,29 @@ const NavbarStyled = styled.div`
     .login {
       background-color: #8c30e8;
     }
+  }
+
+  @media (max-width: 1335px) {
+  }
+
+  @media (max-width: 1200px) {
+  }
+
+  @media (max-width: 1024px) {
+  }
+
+  @media (max-width: 768px) {
+    font-size: small;
+  }
+
+  @media (max-width: 640px) {
+    .nav {
+      display: none;
+      background-color: red;
+    }
+  }
+
+  @media (max-width: 480px) {
   }
 `;
 

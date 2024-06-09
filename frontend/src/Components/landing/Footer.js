@@ -222,5 +222,24 @@ const FooterStyled = styled.div`
       }
     }
   }
+
+  @media (max-width: 1335px) {
+  }
+
+  @media (max-width: 1200px) {
+  }
+
+  @media (max-width: 1024px) {
+  }
+
+  @media (max-width: 768px) {
+    font-size: small;
+  }
+
+  @media (max-width: 640px) {
+  }
+
+  @media (max-width: 480px) {
+  }
 `;
 export default Footer;

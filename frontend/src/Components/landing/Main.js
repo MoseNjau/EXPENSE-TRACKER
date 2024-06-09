@@ -39,7 +39,7 @@ function Main() {
         </div>
         <div className="content">
           <div className="inner-content">
-            <h1>Have the Statistics of your Cash</h1>
+            <div>Have the Statistics of your Cash</div>
             <p>
               Get an idea of the highest and lowest amount of money that you
               spend and receive overtime
@@ -60,24 +60,16 @@ function Main() {
 }
 
 const MainStyled = styled.div`
-  .section1,
-  .section2,
-  .section3,
-  .section4,
-  .section5 {
-    min-height: 400px;
-  }
-
   .section1 {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 15px;
-    background-image: linear-gradient(#b273f0, white);
+    background-image: linear-gradient(#8c30e8, white);
     border-radius: 20px;
-    padding: 20px;
+    padding: 10px;
     .image {
-      border-radius: 30px;
+      border-radius: 20px;
       object-fit: contain;
     }
   }
@@ -121,9 +113,11 @@ const MainStyled = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 50%;
       .inner-content {
         width: 60%;
-        h1 {
+        div {
+          font-weight: bolder;
           margin-top: 10px;
           margin-bottom: 10px;
         }
@@ -152,6 +146,89 @@ const MainStyled = styled.div`
     text-align: center;
     p {
       width: 60%;
+    }
+  }
+
+  @media (max-width: 1335px) {
+  }
+
+  @media (max-width: 1200px) {
+  }
+
+  @media (max-width: 1024px) {
+  }
+
+  @media (max-width: 768px) {
+    font-size: small;
+    .section3 {
+      .pic {
+        .chart {
+          height: 80%;
+          width: 80%;
+        }
+      }
+    }
+    .section4 {
+      .pic {
+        .min {
+          height: 80%;
+          width: 80%;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 640px) {
+    .section1 {
+      .image {
+        height: 80%;
+        width: 80%;
+      }
+    }
+    .section3 {
+      .pic {
+        .chart {
+          height: 80%;
+          width: 80%;
+        }
+      }
+    }
+    .section4 {
+      .pic {
+        .min {
+          height: 80%;
+          width: 80%;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .section1 {
+      .image {
+        height: 75%;
+        width: 75%;
+      }
+    }
+  }
+
+  .section1,
+  .section2,
+  .section3,
+  .section4,
+  .section5 {
+    @media (max-width: 1024px) {
+      font-size: xx-large;
+    }
+
+    @media (max-width: 768px) {
+      font-size: x-large;
+    }
+    @media (max-width: 640px) {
+      font-size: larger;
+    }
+    @media (max-width: 480px) {
+      font-size: medium;
     }
   }
 `;
