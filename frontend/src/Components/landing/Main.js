@@ -60,11 +60,22 @@ function Main() {
 }
 
 const MainStyled = styled.div`
+  .section1,
+  .section2,
+  .section3,
+  .section4,
+  .section5 {
+    min-height: 400px;
+  }
+
   .section1 {
     display: flex;
     justify-content: center;
     align-items: center;
     margin: 15px;
+    background-image: linear-gradient(#b273f0, white);
+    border-radius: 20px;
+    padding: 20px;
     .image {
       border-radius: 30px;
       object-fit: contain;
@@ -111,7 +122,15 @@ const MainStyled = styled.div`
       justify-content: center;
       align-items: center;
       .inner-content {
-        width: 70%;
+        width: 60%;
+        h1 {
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
+        p {
+          margin-top: 10px;
+          margin-bottom: 10px;
+        }
       }
     }
     .pic {

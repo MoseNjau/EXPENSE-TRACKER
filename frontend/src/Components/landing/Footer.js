@@ -117,7 +117,8 @@ const FooterStyled = styled.div`
             font-size: small;
           }
           .items {
-            margin: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
           }
         }
         .use-expense-tracker {
@@ -126,7 +127,8 @@ const FooterStyled = styled.div`
             font-size: small;
           }
           .items {
-            margin: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
           }
         }
         .what-we-do {
@@ -135,7 +137,8 @@ const FooterStyled = styled.div`
             font-size: small;
           }
           .items {
-            margin: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
           }
         }
         .need-help {
@@ -144,7 +147,8 @@ const FooterStyled = styled.div`
             font-size: small;
           }
           .items {
-            margin: 5px;
+            margin-top: 10px;
+            margin-bottom: 10px;
           }
         }
       }
