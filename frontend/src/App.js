@@ -1,3 +1,4 @@
+// src/App.js
 import React, { useMemo, useState } from "react";
 import styled from "styled-components";
 import bg from "./img/bg.png";
@@ -14,6 +15,7 @@ import Expenses from './Components/Expenses/Expenses';
 import Transactions from './Components/Transactions/Transactions';
 import LandingPage from './Components/LandingPage/LandingPage';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import PublicRoute from './Components/PublicRoute/PublicRoute';
 import Navigation from "./Components/Navigation/Navigation";
 import { useGlobalContext } from './Context/GlobalContext';
 
@@ -38,9 +40,30 @@ function App() {
         {user && <Navigation active={active} setActive={setActive} handleLogout={handleLogout} />}
         <main>
           <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
+            <Route 
+              path="/" 
+              element={
+                <PublicRoute>
+                  <LandingPage />
+                </PublicRoute>
+              } 
+            />
+            <Route 
+              path="/signup" 
+              element={
+                <PublicRoute>
+                  <Signup />
+                </PublicRoute>
+              } 
+            />
+            <Route 
+              path="/login" 
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              } 
+            />
             <Route path="/logout" element={<Logout />} />
             <Route 
               path="/dashboard" 
