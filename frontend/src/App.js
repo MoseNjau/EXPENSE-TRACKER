@@ -40,7 +40,6 @@ function App() {
         {user && <Navigation active={active} setActive={setActive} handleLogout={handleLogout} />}
         <main>
           <Routes>
-<<<<<<< HEAD
             <Route 
               path="/" 
               element={
@@ -65,11 +64,6 @@ function App() {
                 </PublicRoute>
               } 
             />
-=======
-            <Route index element={<LandingPage />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
->>>>>>> 08e7c38536650f44f11953b2bc41a1f476bb14c8
             <Route path="/logout" element={<Logout />} />
             <Route 
               path="/dashboard" 
