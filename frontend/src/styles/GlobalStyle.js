@@ -1,4 +1,4 @@
-import {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
     *{
@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
         --color-grey: #aaa;
         --color-accent: #F56692;
         --color-delete: #FF0000;
+        
     }
 
     body{
@@ -50,4 +51,29 @@ export const GlobalStyle = createGlobalStyle`
             }
         }
     }
+
+
+ @media (max-width: 1335px) {
+    max-width: 1200px;
+  }
+
+  @media (max-width: 1200px) {
+    max-width: 1024px;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 768px;
+  }
+
+  @media (max-width: 768px) {
+    max-width: 640px;
+  }
+
+  @media (max-width: 640px) {
+    max-width: 480px;
+  }
+
+  @media (max-width: 480px) {
+    max-width: 100%;
+  } 
 `;

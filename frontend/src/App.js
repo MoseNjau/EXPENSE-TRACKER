@@ -6,14 +6,14 @@ import { MainLayout } from "./styles/Layouts";
 import Orb from "./Components/Orb/Orb";
 import { ToastContainer } from "react-toastify";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import Signup from './Components/Auth/Signup';
-import Login from './Components/Auth/Login';
-import Logout from './Components/Auth/Logout';
-import Dashboard from './Components/Dashboard/Dashboard';
-import Income from './Components/Income/Income';
-import Expenses from './Components/Expenses/Expenses';
-import Transactions from './Components/Transactions/Transactions';
-import LandingPage from './Components/LandingPage/LandingPage';
+import Signup from './pages/Auth/Signup';
+import Login from './pages/Auth/Login';
+import Logout from './pages/Auth/Logout';
+import Dashboard from './pages/Dashboard/Dashboard';
+import Income from './pages/Income/Income';
+import Expenses from './pages/Expenses/Expenses';
+import Transactions from './pages/Transactions/Transactions';
+import LandingPage from './pages/LandingPage/LandingPage';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
 import PublicRoute from './Components/PublicRoute/PublicRoute';
 import Navigation from "./Components/Navigation/Navigation";
@@ -40,6 +40,7 @@ function App() {
         {user && <Navigation active={active} setActive={setActive} handleLogout={handleLogout} />}
         <main>
           <Routes>
+<<<<<<< HEAD
             <Route 
               path="/" 
               element={
@@ -64,6 +65,11 @@ function App() {
                 </PublicRoute>
               } 
             />
+=======
+            <Route index element={<LandingPage />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+>>>>>>> 08e7c38536650f44f11953b2bc41a1f476bb14c8
             <Route path="/logout" element={<Logout />} />
             <Route 
               path="/dashboard" 
@@ -115,7 +121,7 @@ const AppStyled = styled.div`
     background: rgba(252, 246, 249, 0.78);
     border: 3px solid #ffffff;
     backdrop-filter: blur(4.5px);
-    border-radius: 32px;
+    border-radius: 15px;
     overflow-x: hidden;
     &::-webkit-scrollbar {
       width: 0;
