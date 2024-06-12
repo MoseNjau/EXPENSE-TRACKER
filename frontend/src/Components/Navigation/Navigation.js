@@ -1,4 +1,12 @@
-// src/Components/Navigation/Navigation.js
+/**
+ * @file Navigation.js
+ * 
+ * This file contains the Navigation component for the Expense Tracker application.
+ * It handles user navigation, displays user information, and provides logout functionality.
+ * 
+ * The component uses styled-components for styling and react-router-dom for navigation.
+ */
+
 import React from 'react';
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
@@ -7,19 +15,35 @@ import { signout } from '../../utils/Icons';
 import { menuItems } from '../../utils/menuItems';
 import avatar from "../../img/avatar.png";  // Make sure the path to avatar is correct
 
+/**
+ * Navigation Component
+ * 
+ * @param {object} props - Component props
+ * @param {number} props.active - Active menu item ID
+ * @param {function} props.setActive - Function to set active menu item
+ * @returns {JSX.Element} - Rendered Navigation component
+ */
 function Navigation({ active, setActive }) {
+  // Global context for user and logout function
   const { user, logout } = useGlobalContext();
   const navigate = useNavigate();
 
+  /**
+   * Handles logout action.
+   * Clears user session and navigates to home page.
+   */
   const handleLogout = () => {
     logout();
     navigate('/');
   };
 
-  if (!user) return null; // Don't render if user is not logged in
+  // Do not render if user is not logged in
+  if (!user) return null;
 
+  // Render Navigation component
   return (
     <NavStyled>
+      {/* User information section */}
       <div className="user-con">
         <img src={avatar} alt="" />
         <div className="text">
@@ -27,23 +51,25 @@ function Navigation({ active, setActive }) {
           <p>Moses Njau</p>
         </div>
       </div>
+
+      {/* Menu items section */}
       <ul className="menu-items">
-        {menuItems.map((item) => {
-          return (
-            <li
-              key={item.id}
-              onClick={() => {
-                setActive(item.id);
-                navigate(item.link);
-              }}
-              className={active === item.id ? 'active' : ''}
-            >
-              {item.icon}
-              <span>{item.title}</span>
-            </li>
-          );
-        })}
+        {menuItems.map((item) => (
+          <li
+            key={item.id}
+            onClick={() => {
+              setActive(item.id);
+              navigate(item.link);
+            }}
+            className={active === item.id ? 'active' : ''}
+          >
+            {item.icon}
+            <span>{item.title}</span>
+          </li>
+        ))}
       </ul>
+
+      {/* Bottom navigation section */}
       <div className="bottom-nav">
         <li onClick={handleLogout}>{signout} Sign Out</li>
       </div>
@@ -51,6 +77,7 @@ function Navigation({ active, setActive }) {
   );
 }
 
+// Styled-components for Navigation styling
 const NavStyled = styled.nav`
   padding: 2rem 1.5rem;
   width: 374px;
@@ -63,6 +90,8 @@ const NavStyled = styled.nav`
   flex-direction: column;
   justify-content: space-between;
   gap: 2rem;
+
+  /* User information styling */
   .user-con {
     height: 100px;
     display: flex;
@@ -86,6 +115,7 @@ const NavStyled = styled.nav`
     }
   }
 
+  /* Menu items styling */
   .menu-items {
     flex: 1;
     display: flex;
@@ -109,6 +139,7 @@ const NavStyled = styled.nav`
     }
   }
 
+  /* Active menu item styling */
   .active {
     color: rgba(34, 34, 96, 1) !important;
     i {
@@ -126,6 +157,7 @@ const NavStyled = styled.nav`
     }
   }
 
+  /* Bottom navigation styling */
   .bottom-nav {
     li {
       cursor: pointer;
@@ -138,6 +170,11 @@ const NavStyled = styled.nav`
         color: rgba(34, 34, 96, 1);
       }
     }
+  }
+
+  @media (max-width: 768px) {
+    /* Media query for smaller screens */
+    font-size: small;
   }
 `;
 

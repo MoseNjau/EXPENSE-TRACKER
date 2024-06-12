@@ -1,17 +1,34 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import styled from 'styled-components'
+/**
+ * @file Navbar.js
+ * 
+ * This file contains the Navbar component for the Expense Tracker application.
+ * It includes navigation links and authentication options.
+ */
 
+import React from 'react';
+import { Link } from 'react-router-dom';
+import styled from 'styled-components';
+
+/**
+ * Navbar Component
+ * 
+ * @returns {JSX.Element} - Rendered Navbar component
+ */
 function Navbar() {
   return (
     <NavbarStyled>
+      {/* Expense Tracker heading */}
       <h2 className="expense-tracker">Expense Tracker</h2>
+
+      {/* Navigation links */}
       <div className="nav">
         <div className="home">Home</div>
         <div className="services">How it works</div>
         <div className="contact-us">Contact Us</div>
         <div className="about-us">About Us</div>
       </div>
+
+      {/* Authentication links */}
       <div className="auth">
         <Link to="/signup" className="sign-up">Sign Up</Link>
         <Link to="/login" className="login">Login</Link>
@@ -20,22 +37,28 @@ function Navbar() {
   );
 }
 
+// Styled-components for Navbar styling
 const NavbarStyled = styled.div`
   background-color: #fbe4ff;
   display: flex;
   justify-content: space-between;
   padding: 5px;
   box-sizing: content-box;
+
+  /* Expense Tracker heading styling */
   .expense-tracker {
     place-self: center;
     &:hover {
       cursor: pointer;
     }
   }
+
+  /* Navigation links styling */
   .nav {
     display: flex;
     justify-content: space-evenly;
     place-self: center;
+
     .home,
     .services,
     .contact-us,
@@ -52,10 +75,13 @@ const NavbarStyled = styled.div`
       border-radius: 10px;
     }
   }
+
+  /* Authentication links styling */
   .auth {
     display: flex;
     justify-content: space-evenly;
     place-self: center;
+
     .sign-up,
     .login {
       &:hover {
@@ -68,10 +94,7 @@ const NavbarStyled = styled.div`
       text-decoration: none;
       margin-left: 10px;
       margin-right: 10px;
-      padding-left: 10px;
-      padding-right: 10px;
-      padding-top: 8px;
-      padding-bottom: 8px;
+      padding: 8px 20px;
       border-radius: 20px;
     }
 
@@ -83,28 +106,17 @@ const NavbarStyled = styled.div`
     }
   }
 
-  @media (max-width: 1335px) {
-  }
-
-  @media (max-width: 1200px) {
-  }
-
-  @media (max-width: 1024px) {
-  }
-
+  /* Media queries */
   @media (max-width: 768px) {
     font-size: small;
   }
 
   @media (max-width: 640px) {
+    /* Hide navigation links on smaller screens */
     .nav {
       display: none;
-      background-color: red;
     }
-  }
-
-  @media (max-width: 480px) {
   }
 `;
 
-export default Navbar
+export default Navbar;

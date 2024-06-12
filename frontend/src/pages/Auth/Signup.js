@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../Context/GlobalContext';
 import styled from 'styled-components';
 
+// Signup component handles user registration
 const Signup = () => {
     const { register } = useGlobalContext();
     const [username, setUsername] = useState('');
@@ -11,6 +12,7 @@ const Signup = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    // Function to handle user registration
     const handleSignup = async (e) => {
         e.preventDefault();
         try {
@@ -22,6 +24,7 @@ const Signup = () => {
         }
     };
 
+    // Render signup form with inputs and submit button
     return (
         <SignupStyled>
             <form onSubmit={handleSignup}>
@@ -53,6 +56,7 @@ const Signup = () => {
     );
 };
 
+// Styled component for the Signup form
 const SignupStyled = styled.div`
     display: flex;
     justify-content: center;
@@ -109,4 +113,4 @@ const SignupStyled = styled.div`
     }
 `;
 
-export default Signup;
+export default Signup; // Export Signup component for use in other parts of the application

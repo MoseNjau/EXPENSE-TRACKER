@@ -1,25 +1,30 @@
-// src/components/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../../Context/GlobalContext';
 import styled from 'styled-components';
 
+// Define the Login component
 const Login = () => {
+    // Access necessary functions and state from global context
     const { login } = useGlobalContext();
+
+    // State variables for email, password, and navigation
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
+    // Handle login form submission
     const handleLogin = async (e) => {
-        e.preventDefault();
+        e.preventDefault(); // Prevent default form submission behavior
         try {
-            await login(email, password);
-            navigate('/dashboard'); // Redirect to dashboard page
+            await login(email, password); // Attempt to login with provided credentials
+            navigate('/dashboard'); // Redirect to dashboard on successful login
         } catch (err) {
-            alert('Error logging in user');
+            alert('Error logging in user'); // Alert user in case of login error
         }
     };
 
+    // JSX structure and styling using styled-components
     return (
         <LoginStyled>
             <form onSubmit={handleLogin}>
@@ -44,6 +49,7 @@ const Login = () => {
     );
 };
 
+// Styling for Login component using styled-components
 const LoginStyled = styled.div`
     display: flex;
     justify-content: center;
@@ -100,4 +106,4 @@ const LoginStyled = styled.div`
     }
 `;
 
-export default Login;
+export default Login; // Export Login component for use in other parts of the application

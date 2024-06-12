@@ -1,6 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from 'react'; // Importing React library
+import styled from 'styled-components'; // Importing styled-components for styling
 
+// Sample transactions data
 const transactionsData = [
   {
     id: 1,
@@ -19,6 +20,11 @@ const transactionsData = [
   // Add more transactions as needed
 ];
 
+/**
+ * Transactions Component
+ * 
+ * @returns {JSX.Element} JSX representation of the Transactions component
+ */
 const Transactions = () => {
   // Sort transactions by date (earliest date at the top)
   const sortedTransactions = [...transactionsData].sort(
@@ -38,12 +44,13 @@ const Transactions = () => {
           </tr>
         </thead>
         <tbody>
+          {/* Map through sorted transactions and render each transaction as a table row */}
           {sortedTransactions.map((transaction) => (
             <tr key={transaction.id}>
-              <td>{transaction.date}</td>
-              <td>{transaction.title}</td>
-              <td>{transaction.amount}</td>
-              <td>{transaction.description}</td>
+              <td>{transaction.date}</td> {/* Display transaction date */}
+              <td>{transaction.title}</td> {/* Display transaction title */}
+              <td>{transaction.amount}</td> {/* Display transaction amount */}
+              <td>{transaction.description}</td> {/* Display transaction description */}
             </tr>
           ))}
         </tbody>
@@ -52,34 +59,35 @@ const Transactions = () => {
   );
 };
 
+// Styled component for Transactions container
 const TransactionsContainer = styled.div`
-  padding: 2rem;
+  padding: 2rem; /* Padding around the Transactions component */
 `;
 
+// Styled component for Transactions table
 const TransactionsTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
+  width: 100%; /* Full width for the table */
+  border-collapse: collapse; /* Collapse borders between table cells */
 
-  th,
-  td {
-    padding: 0.5rem;
-    border-bottom: 1px solid #ccc;
-    text-align: left;
+  th, td {
+    padding: 0.5rem; /* Padding inside table cells */
+    border-bottom: 1px solid #ccc; /* Bottom border for table rows */
+    text-align: left; /* Align text to the left */
   }
 
   th {
-    background-color: #f5f5f5;
+    background-color: #f5f5f5; /* Background color for table header cells */
   }
 
   td {
     &:first-child {
-      width: 25%;
+      width: 25%; /* Set width for the first column */
     }
 
     &:nth-child(3) {
-      color: ${(props) => (props.amount < 0 ? 'red' : 'green')};
+      color: ${(props) => (props.amount < 0 ? 'red' : 'green')}; /* Conditional styling based on transaction amount */
     }
   }
 `;
 
-export default Transactions;
+export default Transactions; // Export Transactions component as default

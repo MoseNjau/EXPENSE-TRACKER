@@ -1,3 +1,4 @@
+// src/components/ExpenseForm.js
 import React, { useState } from "react";
 import styled from "styled-components";
 import DatePicker from "react-datepicker";
@@ -6,6 +7,7 @@ import Button from "../../Components/Button/Button";
 import { plus } from "../../utils/Icons";
 import { useGlobalContext } from "../../Context/GlobalContext";
 
+// ExpenseForm component for adding new expenses
 function ExpenseForm() {
   const { addExpense, error, setError } = useGlobalContext();
   const [inputState, setInputState] = useState({
@@ -18,14 +20,17 @@ function ExpenseForm() {
 
   const { title, amount, date, category, description } = inputState;
 
+  // Handle input changes for form fields
   const handleInput = (name) => (e) => {
     setInputState({ ...inputState, [name]: e.target.value });
-    setError("");
+    setError(""); // Clear error state on input change
   };
 
+  // Handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    addExpense(inputState);
+    addExpense(inputState); // Call addExpense function with current state
+    // Reset form fields after submission
     setInputState({
       title: "",
       amount: "",
@@ -35,6 +40,7 @@ function ExpenseForm() {
     });
   };
 
+  // Render the ExpenseForm UI
   return (
     <ExpenseFormStyled onSubmit={handleSubmit}>
       {error && <p className="error">{error}</p>}
@@ -113,10 +119,12 @@ function ExpenseForm() {
   );
 }
 
+// Styled component for ExpenseForm layout
 const ExpenseFormStyled = styled.form`
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
   input,
   textarea,
   select {
@@ -131,10 +139,12 @@ const ExpenseFormStyled = styled.form`
     resize: none;
     box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
     color: rgba(34, 34, 96, 0.9);
+
     &::placeholder {
       color: rgba(34, 34, 96, 0.4);
     }
   }
+
   .input-control {
     input {
       width: 100%;
@@ -144,8 +154,10 @@ const ExpenseFormStyled = styled.form`
   .selects {
     display: flex;
     justify-content: flex-end;
+
     select {
       color: rgba(34, 34, 96, 0.4);
+
       &:focus,
       &:active {
         color: rgba(34, 34, 96, 1);
@@ -156,10 +168,12 @@ const ExpenseFormStyled = styled.form`
   .submit-btn {
     button {
       box-shadow: 0px 1px 15px rgba(0, 0, 0, 0.06);
+
       &:hover {
         background: var(--color-green) !important;
       }
     }
   }
 `;
-export default ExpenseForm;
+
+export default ExpenseForm; // Export ExpenseForm component for use in other parts of the application
